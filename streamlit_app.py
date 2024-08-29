@@ -68,16 +68,28 @@ if st.button("Scrape"):
             st.text_area("Scraped Content:", value=scraped_content, height=400)
             st.success("Scraping complete!")
 
+            # Debug information
+            st.write(f"Scraped content length: {len(scraped_content)}")
+
             # Create a download button
-            buffer = io.BytesIO()
-            buffer.write(scraped_content.encode())
-            st.download_button(
-                label="Download Scraped Content",
-                data=buffer,
-                file_name="scraped_content.txt",
-                mime="text/plain"
-            )
+            if scraped_content:
+                buffer = io.BytesIO()
+                buffer.write(scraped_content.encode())
+                buffer.seek(0)
+                
+                st.download_button(
+                    label="Download Scraped Content",
+                    data=buffer,
+                    file_name="scraped_content.txt",
+                    mime="text/plain"
+                )
+                st.write("Download button should appear above this text.")
+            else:
+                st.warning("No content was scraped.")
         else:
             st.warning("Please enter at least one valid URL.")
     else:
         st.warning("Please enter some URLs to scrape.")
+
+# Debug information
+st.write("End of the app reached.")
