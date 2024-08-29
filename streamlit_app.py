@@ -67,6 +67,16 @@ if st.button("Scrape"):
             
             st.text_area("Scraped Content:", value=scraped_content, height=400)
             st.success("Scraping complete!")
+
+            # Create a download button
+            buffer = io.BytesIO()
+            buffer.write(scraped_content.encode())
+            st.download_button(
+                label="Download Scraped Content",
+                data=buffer,
+                file_name="scraped_content.txt",
+                mime="text/plain"
+            )
         else:
             st.warning("Please enter at least one valid URL.")
     else:
