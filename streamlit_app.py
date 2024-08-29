@@ -3,6 +3,7 @@ import requests
 from bs4 import BeautifulSoup
 import time
 import random
+import io  # Add this import statement
 
 # Custom headers to mimic a browser
 headers = {
