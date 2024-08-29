@@ -39,7 +39,7 @@ def scrape_url(url):
     except Exception as e:
         return f"Error scraping {url}: {str(e)}"
 
-st.title("Web Scraper")
+st.title("Ant's Super Cool Web Scraper")
 
 # Text area for user to input URLs
 urls_input = st.text_area("Enter URLs (one per line):", height=200)
